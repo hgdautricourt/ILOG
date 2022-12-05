@@ -31,9 +31,11 @@ function createLaser() {
     return laser;
 }
 function moveLaserPointer(laserPointer, x, y) {
-    const { left, top } = laserPointer.getBoundingClientRect();
-    const newLeft = left + x;
-    const newTop = top + y;
-    laserPointer.style.left = `${newLeft}px`;
-    laserPointer.style.top = `${newTop}px`;
+    requestAnimationFrame(() => {
+        const {left, top} = laserPointer.getBoundingClientRect();
+        const newLeft = left + x;
+        const newTop = top + y;
+        laserPointer.style.left = `${newLeft}px`;
+        laserPointer.style.top = `${newTop}px`;
+    })
 }
