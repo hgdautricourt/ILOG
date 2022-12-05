@@ -35,9 +35,11 @@ app.get('/laserpointer', (req: Request, res: Response) => {
     res.sendFile('./laserpointer.html', { root: "public" });
 })
 
-app.use(express.static("dist"));
+app.use(express.static("dist/public"));
 
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
+
+module.exports = app

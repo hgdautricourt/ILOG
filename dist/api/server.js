@@ -30,7 +30,7 @@ app.get('/slides', (req, res) => {
 app.get('/laserpointer', (req, res) => {
     res.sendFile('./laserpointer.html', { root: "public" });
 });
-app.use(express_1.default.static("dist/public"));
+app.use(express_1.default.static("dist"));
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
