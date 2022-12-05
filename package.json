@@ -4,9 +4,9 @@
   "description": "Projet d'ilog, trop pressé de le faire",
   "main": "express.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc -p back/tsconfig.json -p front/tsconfig.json",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/js/express.js\""
+    "dev": "concurrently \"npx tsc --watch -p back/tsconfig.json -p back/tsconfig.json\" \"nodemon -q api/index.js\""
   },
   "repository": {
     "type": "git",
