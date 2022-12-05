@@ -20,15 +20,15 @@ io.on('connect', (socket) => {
 });
 app.use(express_useragent_1.default.express());
 app.get('/', (req, res) => {
-    res.sendFile(req.useragent?.isMobile ? './laserpointer.html' : './slides.html', { root: "public" });
+    res.send('Hello world');
+    // res.sendFile(req.useragent?.isMobile ? './laserpointer.html' : './slides.html', { root: "public" });
 });
-app.get('/slides', (req, res) => {
+app.get('/api/slides', (req, res) => {
     res.sendFile('./slides.html', { root: "public" });
 });
-app.get('/laserpointer', (req, res) => {
+app.get('/api/laserpointer', (req, res) => {
     res.sendFile('./laserpointer.html', { root: "public" });
 });
-// app.use(express.static("dist/public"));
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
