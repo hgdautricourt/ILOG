@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc -p back/tsconfig.json -p front/tsconfig.json",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch -p back/tsconfig.json -p back/tsconfig.json\" \"nodemon -q api/index.js\""
+    "dev": "concurrently \"npx tsc --watch -p back/tsconfig.json -p front/tsconfig.json\" \"nodemon -q api/index.js\""
   },
   "repository": {
     "type": "git",

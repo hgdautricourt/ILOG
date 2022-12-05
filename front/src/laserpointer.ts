@@ -43,9 +43,7 @@ function createLaser(): HTMLSpanElement {
 // Listen for device motion events and update the laser pointer's position
 function useDeviceMotionEvent(laser: HTMLSpanElement) {
     window.addEventListener("devicemotion", (event) => {
-        alert(event)
 
-        // Update the laser pointer's position based on the device's acceleration
         if(event.acceleration?.x != null && event.acceleration?.y != null){
             xPos += event.acceleration.x;
             yPos += event.acceleration.y;
