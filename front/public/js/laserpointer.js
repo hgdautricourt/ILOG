@@ -8,12 +8,8 @@ startButton.addEventListener('click', () => {
         .then((res) => {
         if (res === 'granted') {
             const laser = createLaser();
-            const debugX = document.getElementById('debug-x');
-            const debugY = document.getElementById('debug-y');
             window.addEventListener('devicemotion', (e) => {
                 const { x, y } = e.accelerationIncludingGravity;
-                debugX.innerHTML = String(`X: ${x?.toFixed(3)}`);
-                debugY.innerHTML = String(`Y: ${y?.toFixed(3)}`);
                 moveLaserPointer(laser, x ?? 0, -(y ?? 0));
             });
             startButton.remove();
@@ -28,6 +24,8 @@ function createLaser() {
     laser.style.width = `${pointerSize}px`;
     laser.style.height = `${pointerSize}px`;
     laser.style.backgroundColor = "red";
+    laser.style.borderRadius = "100%";
+    laser.style.boxShadow = "0px 0px 150px 8px rgba(255,46,46,1)";
     document.body.appendChild(laser);
     return laser;
 }
