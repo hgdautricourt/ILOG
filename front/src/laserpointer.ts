@@ -59,8 +59,8 @@ function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: number) {
         const {left, top} = laserPointer.getBoundingClientRect();
 
         // Calculate the new position of the laser pointer using the acceleration values
-        const newLeft = left + x;
-        const newTop = top + y;
+        const newLeft = Math.max(0, Math.min(left + x, window.innerHeight));
+        const newTop = Math.max(0, Math.min(top + y, window.innerHeight));
 
         // Update the position of the laser pointer on the screen
         laserPointer.style.left = `${newLeft}px`;
