@@ -1,12 +1,5 @@
 // Import the WebSocket and DeviceMotionEvent interfaces
-// import io from 'socket.io-client';
-//
-// // Connect to the Socket.IO server
-// const socket = io('http://localhost:3000');
-//
-// socket.on('connect', () => {
-//   console.log('Connected to Socket.io server');
-// });
+import io from 'socket.io-client';
 
 // Set the initial position of the laser pointer to the center of the screen
 const POINTER_SIZE = 15
@@ -21,10 +14,16 @@ startButton.addEventListener('click', () => {
         .then((res: NotificationPermission) => {
             if (res === 'granted') {
                 const laser = createLaser()
+                const socket = io('http://localhost:3000');
+
+                socket.on('connect', () => console.log('Connected to Socket.io server'));
+                socket.on('connect_error', (err) => alert(err))
 
                 window.addEventListener('devicemotion', (e: DeviceMotionEvent) => {
                     const { x, y } = e.accelerationIncludingGravity!!;
 
+
+                    socket.emit('laser.update', { x, y: -(y ?? 0) })
                     moveLaserPointer(laser, MULTIPLIER * (x ?? 0), MULTIPLIER * -(y ?? 0))
                 })
 
