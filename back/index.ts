@@ -19,6 +19,10 @@ io.on('connect', (socket) => {
   });
 });
 
+io.on('laser.update', (data) => {
+  io.emit('slides.update', data);
+});
+
 app.use(userAgent.express());
 
 app.get('/api', (req, res) => {
