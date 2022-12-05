@@ -9,8 +9,6 @@ const port = 8080;
 // Initialize dotenv
 dotenv.config();
 
-const socketPort = Number(process.env.SOCKET_SERVER_PORT);
-
 const io = new Server();
 
 io.on('connect', (socket) => {

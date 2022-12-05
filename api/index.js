@@ -11,7 +11,6 @@ const app = (0, express_1.default)();
 const port = 8080;
 // Initialize dotenv
 dotenv_1.default.config();
-const socketPort = Number(process.env.SOCKET_SERVER_PORT);
 const io = new socket_io_1.Server();
 io.on('connect', (socket) => {
     console.log('New client connected');
