@@ -6,13 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const socket_io_1 = require("socket.io");
 const express_useragent_1 = __importDefault(require("express-useragent"));
+const dotenv_1 = __importDefault(require("dotenv"));
 const app = (0, express_1.default)();
 const port = 8080;
 // Initialize dotenv
-const dotenv_1 = __importDefault(require("dotenv"));
-const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
-// Get Socket io Server URL from dotenv
 const socketPort = Number(process.env.SOCKET_SERVER_PORT);
 const io = new socket_io_1.Server();
 io.on('connect', (socket) => {
@@ -32,7 +30,7 @@ app.get('/slides', (req, res) => {
 app.get('/laserpointer', (req, res) => {
     res.sendFile('./laserpointer.html', { root: "public" });
 });
-app.use(express_1.default.static(path_1.default.join("dist")));
+app.use(express_1.default.static("dist"));
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

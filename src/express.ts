@@ -1,16 +1,14 @@
 import express, { Express, Request, Response } from 'express';
 import { Server } from "socket.io";
 import userAgent from 'express-useragent';
+import dotenv from 'dotenv';
 
 const app: Express = express();
 const port = 8080;
 
-
 // Initialize dotenv
-import dotenv from 'dotenv';
-import path from 'path';
 dotenv.config();
-// Get Socket io Server URL from dotenv
+
 const socketPort = Number(process.env.SOCKET_SERVER_PORT);
 
 const io = new Server();
@@ -37,7 +35,7 @@ app.get('/laserpointer', (req: Request, res: Response) => {
     res.sendFile('./laserpointer.html', { root: "public" });
 })
 
-app.use(express.static(path.join("dist")));
+app.use(express.static("dist"));
 
 
 app.listen(port, () => {
