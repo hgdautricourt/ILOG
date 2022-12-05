@@ -23,10 +23,10 @@ startButton.addEventListener('click', () => {
                 const debugY = document.getElementById('debug-y')!!
 
                 window.addEventListener('devicemotion', (e: DeviceMotionEvent) => {
-                    const { x, y } = e.acceleration!!;
+                    const { x, y } = e.accelerationIncludingGravity!!;
 
-                    debugX.innerHTML = String(x)
-                    debugY.innerText = String(y)
+                    debugX.innerHTML = String(`X: ${x?.toFixed(3)}`)
+                    debugY.innerHTML = String(`Y: ${y?.toFixed(3)}`)
 
                     moveLaserPointer(laser, x ?? 0, y ?? 0)
                 })
@@ -55,13 +55,15 @@ function createLaser(): HTMLSpanElement {
 // Listen for device motion events and update the laser pointer's position
 function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: number) {
     // Get the current position of the laser pointer
-    const { left, top } = laserPointer.getBoundingClientRect();
+    requestAnimationFrame(() => {
+        const {left, top} = laserPointer.getBoundingClientRect();
 
-    // Calculate the new position of the laser pointer using the acceleration values
-    const newLeft = left + x;
-    const newTop = top + y;
+        // Calculate the new position of the laser pointer using the acceleration values
+        const newLeft = left + x;
+        const newTop = top + y;
 
-    // Update the position of the laser pointer on the screen
-    laserPointer.style.left = `${newLeft}px`;
-    laserPointer.style.top = `${newTop}px`;
+        // Update the position of the laser pointer on the screen
+        laserPointer.style.left = `${newLeft}px`;
+        laserPointer.style.top = `${newTop}px`;
+    })
 }

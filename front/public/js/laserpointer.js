@@ -10,11 +10,11 @@ startButton.addEventListener('click', () => {
             const debugX = document.getElementById('debug-x');
             const debugY = document.getElementById('debug-y');
             window.addEventListener('devicemotion', (e) => {
-                const { x, y } = e.acceleration;
-                debugX.innerHTML = String(`X: ${x.toFixed(3)}`);
-                debugY.innerText = String(`Y: ${y.toFixed(3)}`);
+                const { x, y } = e.accelerationIncludingGravity;
+                debugX.innerHTML = String(`X: ${x?.toFixed(3)}`);
+                debugY.innerHTML = String(`Y: ${y?.toFixed(3)}`);
                 moveLaserPointer(laser, x ?? 0, y ?? 0);
-            }, true);
+            });
             startButton.remove();
         }
     });
@@ -32,10 +32,10 @@ function createLaser() {
 }
 function moveLaserPointer(laserPointer, x, y) {
     requestAnimationFrame(() => {
-        const {left, top} = laserPointer.getBoundingClientRect();
+        const { left, top } = laserPointer.getBoundingClientRect();
         const newLeft = left + x;
         const newTop = top + y;
         laserPointer.style.left = `${newLeft}px`;
         laserPointer.style.top = `${newTop}px`;
-    })
+    });
 }
