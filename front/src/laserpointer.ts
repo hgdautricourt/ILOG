@@ -9,6 +9,7 @@
 // });
 
 // Set the initial position of the laser pointer to the center of the screen
+const pointerSize = 15
 const xCenter = window.innerWidth / 2;
 const yCenter = window.innerHeight / 2;
 
@@ -42,8 +43,8 @@ function createLaser(): HTMLSpanElement {
     laser.style.position = "absolute";
     laser.style.left = `${xCenter}px`;
     laser.style.top = `${yCenter}px`;
-    laser.style.width = "15px";
-    laser.style.height = "15px";
+    laser.style.width = `${pointerSize}px`;
+    laser.style.height = `${pointerSize}px`;
     laser.style.backgroundColor = "red";
 
     // Add the laser pointer to the document
@@ -59,8 +60,8 @@ function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: number) {
         const {left, top} = laserPointer.getBoundingClientRect();
 
         // Calculate the new position of the laser pointer using the acceleration values
-        const newLeft = Math.max(0, Math.min(left + x, window.innerHeight));
-        const newTop = Math.max(0, Math.min(top + y, window.innerHeight));
+        const newLeft = Math.max(0, Math.min(left + x, window.innerWidth - pointerSize));
+        const newTop = Math.max(0, Math.min(top + y, window.innerHeight - pointerSize));
 
         // Update the position of the laser pointer on the screen
         laserPointer.style.left = `${newLeft}px`;
