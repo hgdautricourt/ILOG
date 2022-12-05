@@ -16,8 +16,8 @@ function createLaser() {
     laser.style.position = "absolute";
     laser.style.left = `${xPos}px`;
     laser.style.top = `${yPos}px`;
-    laser.style.width = "5px";
-    laser.style.height = "5px";
+    laser.style.width = "15px";
+    laser.style.height = "15px";
     laser.style.backgroundColor = "red";
     document.body.appendChild(laser);
     return laser;
