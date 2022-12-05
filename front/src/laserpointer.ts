@@ -14,7 +14,7 @@ startButton.addEventListener('click', () => {
         .then((res: NotificationPermission) => {
             if (res === 'granted') {
                 const laser = createLaser()
-                const socket = io('http://localhost:3000');
+                const socket = io('https://ilog-hgdautricourt.vercel.app/');
 
                 socket.on('connect', () => console.log('Connected to Socket.io server'));
                 socket.on('connect_error', (err) => alert(err))
