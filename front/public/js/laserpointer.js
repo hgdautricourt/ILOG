@@ -13,7 +13,7 @@ startButton.addEventListener('click', () => {
                 const { x, y } = e.accelerationIncludingGravity;
                 debugX.innerHTML = String(`X: ${x?.toFixed(3)}`);
                 debugY.innerHTML = String(`Y: ${y?.toFixed(3)}`);
-                moveLaserPointer(laser, x ?? 0, y ?? 0);
+                moveLaserPointer(laser, -(x ?? 0), y ?? 0);
             });
             startButton.remove();
         }
