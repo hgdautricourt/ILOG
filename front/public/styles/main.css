@@ -27,6 +27,6 @@ button#start {
 
 .debug__value {
     color: white;
-    font-size: 1rem;
+    font-size: 2rem;
     font-family: monospace;
 }

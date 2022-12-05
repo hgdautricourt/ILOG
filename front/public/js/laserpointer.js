@@ -11,10 +11,10 @@ startButton.addEventListener('click', () => {
             const debugY = document.getElementById('debug-y');
             window.addEventListener('devicemotion', (e) => {
                 const { x, y } = e.acceleration;
-                debugX.innerHTML = String(x);
-                debugY.innerText = String(y);
+                debugX.innerHTML = String(`X: ${x.toFixed(3)}`);
+                debugY.innerText = String(`Y: ${y.toFixed(3)}`);
                 moveLaserPointer(laser, x ?? 0, y ?? 0);
-            });
+            }, true);
             startButton.remove();
         }
     });
