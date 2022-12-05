@@ -1,15 +1,14 @@
 "use strict";
 const xCenter = window.innerWidth / 2;
 const yCenter = window.innerHeight / 2;
-const $ = document.getElementById;
-const startButton = $('start');
+const startButton = document.getElementById('start');
 startButton.addEventListener('click', () => {
     window.DeviceMotionEvent.requestPermission()
         .then((res) => {
         if (res === 'granted') {
             const laser = createLaser();
-            const debugX = $('debug-x');
-            const debugY = $('debug-y');
+            const debugX = document.getElementById('debug-x');
+            const debugY = document.getElementById('debug-y');
             window.addEventListener('devicemotion', (e) => {
                 const { x, y } = e.acceleration;
                 debugX.innerHTML = String(x);

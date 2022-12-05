@@ -12,17 +12,15 @@
 const xCenter = window.innerWidth / 2;
 const yCenter = window.innerHeight / 2;
 
-const $ = document.getElementById
-
-const startButton = $('start')!!
+const startButton = document.getElementById('start')!!
 startButton.addEventListener('click', () => {
     // @ts-ignore
     window.DeviceMotionEvent.requestPermission()
         .then((res: NotificationPermission) => {
             if (res === 'granted') {
                 const laser = createLaser()
-                const debugX = $('debug-x')!!
-                const debugY = $('debug-y')!!
+                const debugX = document.getElementById('debug-x')!!
+                const debugY = document.getElementById('debug-y')!!
 
                 window.addEventListener('devicemotion', (e: DeviceMotionEvent) => {
                     const { x, y } = e.acceleration!!;
