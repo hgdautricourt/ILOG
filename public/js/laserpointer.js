@@ -38,10 +38,9 @@ function createLaser() {
 // Listen for device motion events and update the laser pointer's position
 function useDeviceMotionEvent(laser) {
     window.addEventListener("devicemotion", (event) => {
-        var _a, _b;
         alert(event);
         // Update the laser pointer's position based on the device's acceleration
-        if (((_a = event.acceleration) === null || _a === void 0 ? void 0 : _a.x) != null && ((_b = event.acceleration) === null || _b === void 0 ? void 0 : _b.y) != null) {
+        if (event.acceleration?.x != null && event.acceleration?.y != null) {
             xPos += event.acceleration.x;
             yPos += event.acceleration.y;
         }

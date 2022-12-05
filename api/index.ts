@@ -35,7 +35,7 @@ app.get('/laserpointer', (req: Request, res: Response) => {
     res.sendFile('./laserpointer.html', { root: "public" });
 })
 
-app.use(express.static("dist/public"));
+// app.use(express.static("dist/public"));
 
 
 app.listen(port, () => {

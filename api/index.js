@@ -21,8 +21,7 @@ io.on('connect', (socket) => {
 });
 app.use(express_useragent_1.default.express());
 app.get('/', (req, res) => {
-    var _a;
-    res.sendFile(((_a = req.useragent) === null || _a === void 0 ? void 0 : _a.isMobile) ? './laserpointer.html' : './slides.html', { root: "public" });
+    res.sendFile(req.useragent?.isMobile ? './laserpointer.html' : './slides.html', { root: "public" });
 });
 app.get('/slides', (req, res) => {
     res.sendFile('./slides.html', { root: "public" });
@@ -30,7 +29,7 @@ app.get('/slides', (req, res) => {
 app.get('/laserpointer', (req, res) => {
     res.sendFile('./laserpointer.html', { root: "public" });
 });
-app.use(express_1.default.static("dist/public"));
+// app.use(express.static("dist/public"));
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
