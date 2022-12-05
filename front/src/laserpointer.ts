@@ -9,27 +9,41 @@
 // });
 
 // Set the initial position of the laser pointer to the center of the screen
-let xPos = window.innerWidth / 2;
-let yPos = window.innerHeight / 2;
+const xCenter = window.innerWidth / 2;
+const yCenter = window.innerHeight / 2;
 
-const startButton = document.getElementById('start')!!
+const $ = document.getElementById
+
+const startButton = $('start')!!
 startButton.addEventListener('click', () => {
     // @ts-ignore
     window.DeviceMotionEvent.requestPermission()
-        .then((res: any) => {
-            alert(res)
-            const laser = createLaser()
-            useDeviceMotionEvent(laser)
+        .then((res: NotificationPermission) => {
+            if (res === 'granted') {
+                const laser = createLaser()
+                const debugX = $('debug-x')!!
+                const debugY = $('debug-y')!!
+
+                window.addEventListener('devicemotion', (e: DeviceMotionEvent) => {
+                    const { x, y } = e.acceleration!!;
+
+                    debugX.innerHTML = String(x)
+                    debugY.innerText = String(y)
+
+                    moveLaserPointer(laser, x ?? 0, y ?? 0)
+                })
+
+                startButton.remove()
+            }
         })
-    startButton.remove()
 })
 
 function createLaser(): HTMLSpanElement {
     // Create a new HTML element to represent the laser pointer
     const laser: HTMLSpanElement = document.createElement("span");
     laser.style.position = "absolute";
-    laser.style.left = `${xPos}px`;
-    laser.style.top = `${yPos}px`;
+    laser.style.left = `${xCenter}px`;
+    laser.style.top = `${yCenter}px`;
     laser.style.width = "15px";
     laser.style.height = "15px";
     laser.style.backgroundColor = "red";
@@ -41,28 +55,15 @@ function createLaser(): HTMLSpanElement {
 }
 
 // Listen for device motion events and update the laser pointer's position
-function useDeviceMotionEvent(laser: HTMLSpanElement) {
-    window.addEventListener("devicemotion", (event) => {
+function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: number) {
+    // Get the current position of the laser pointer
+    const { left, top } = laserPointer.getBoundingClientRect();
 
-        if(event.acceleration?.x != null && event.acceleration?.y != null){
-            xPos += event.acceleration.x;
-            yPos += event.acceleration.y;
-        }
+    // Calculate the new position of the laser pointer using the acceleration values
+    const newLeft = left + x;
+    const newTop = top + y;
 
-        // Ensure the laser pointer doesn't go off the screen
-        xPos = Math.max(0, Math.min(xPos, window.innerWidth));
-        yPos = Math.max(0, Math.min(yPos, window.innerHeight));
-
-        // Update the laser pointer's position on the screen
-        laser.style.left = `${xPos}px`;
-        laser.style.top = `${yPos}px`;
-
-        // Send the laser pointer's position to the server
-        // socket.send(
-        //     JSON.stringify({
-        //         xPos,
-        //         yPos,
-        //     })
-        // );
-    });
+    // Update the position of the laser pointer on the screen
+    laserPointer.style.left = `${newLeft}px`;
+    laserPointer.style.top = `${newTop}px`;
 }

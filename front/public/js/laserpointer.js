@@ -1,36 +1,40 @@
 "use strict";
-let xPos = window.innerWidth / 2;
-let yPos = window.innerHeight / 2;
-const startButton = document.getElementById('start');
+const xCenter = window.innerWidth / 2;
+const yCenter = window.innerHeight / 2;
+const $ = document.getElementById;
+const startButton = $('start');
 startButton.addEventListener('click', () => {
     window.DeviceMotionEvent.requestPermission()
         .then((res) => {
-        alert(res);
-        const laser = createLaser();
-        useDeviceMotionEvent(laser);
+        if (res === 'granted') {
+            const laser = createLaser();
+            const debugX = $('debug-x');
+            const debugY = $('debug-y');
+            window.addEventListener('devicemotion', (e) => {
+                const { x, y } = e.acceleration;
+                debugX.innerHTML = String(x);
+                debugY.innerText = String(y);
+                moveLaserPointer(laser, x ?? 0, y ?? 0);
+            });
+            startButton.remove();
+        }
     });
-    startButton.remove();
 });
 function createLaser() {
     const laser = document.createElement("span");
     laser.style.position = "absolute";
-    laser.style.left = `${xPos}px`;
-    laser.style.top = `${yPos}px`;
+    laser.style.left = `${xCenter}px`;
+    laser.style.top = `${yCenter}px`;
     laser.style.width = "15px";
     laser.style.height = "15px";
     laser.style.backgroundColor = "red";
     document.body.appendChild(laser);
     return laser;
 }
-function useDeviceMotionEvent(laser) {
-    window.addEventListener("devicemotion", (event) => {
-        if (event.acceleration?.x != null && event.acceleration?.y != null) {
-            xPos += event.acceleration.x;
-            yPos += event.acceleration.y;
-        }
-        xPos = Math.max(0, Math.min(xPos, window.innerWidth));
-        yPos = Math.max(0, Math.min(yPos, window.innerHeight));
-        laser.style.left = `${xPos}px`;
-        laser.style.top = `${yPos}px`;
-    });
+function moveLaserPointer(laserPointer, x, y) {
+    const { left, top } = laserPointer.getBoundingClientRect();
+    const newLeft = left + x;
+    const newTop = top + y;
+    laserPointer.style.left = `${newLeft}px`;
+    laserPointer.style.top = `${newTop}px`;
 }
