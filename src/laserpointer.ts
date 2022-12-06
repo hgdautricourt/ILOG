@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import {createLaser, moveLaser} from "./utils/laser";
+import {createLaser, moveLaser, moveLaserPointer} from "./utils/laser";
 
 const MOVEMENT_MULTIPLIER = 2.5
 const startButton = document.getElementById('start')!!
@@ -18,7 +18,7 @@ startButton.addEventListener('click', () => {
                     const {x, y} = e.accelerationIncludingGravity!!;
 
                     socket.emit('laser.update', {x, y: -(y ?? 0)})
-                    moveLaser(laser, MOVEMENT_MULTIPLIER * (x ?? 0), MOVEMENT_MULTIPLIER * -(y ?? 0))
+                    moveLaserPointer(laser, MOVEMENT_MULTIPLIER * (x ?? 0), MOVEMENT_MULTIPLIER * -(y ?? 0))
                 })
 
                 startButton.remove()
