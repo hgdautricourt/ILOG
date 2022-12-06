@@ -41,7 +41,7 @@ export function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: nu
     requestAnimationFrame(() => {
 
         // Update the position of the laser pointer on the screen
-        laserPointer.style.left = `${xCenter + x}px`;
-        laserPointer.style.top = `${yCenter + y}px`;
+        laserPointer.style.left = `${(xCenter + x)*3}px`;
+        laserPointer.style.top = `${(yCenter + y)*3}px`;
     })
 }
