@@ -40,7 +40,7 @@ function createLaser(): HTMLSpanElement {
     laser.style.height = `${POINTER_SIZE}px`;
     laser.style.backgroundColor = "red";
     laser.style.borderRadius = "100%";
-    laser.style.boxShadow = "0px 0px 150px 8px rgba(255,0,0,1)";
+    laser.style.boxShadow = "0px 0px 16px 6px rgba(255,0,0,1)";
 
     // Add the laser pointer to the document
     document.body.appendChild(laser);
