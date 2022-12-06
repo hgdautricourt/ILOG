@@ -3,6 +3,8 @@ import {createLaser,createTarget, moveLaser, moveLaserPointer} from "./utils/las
 
 const MOVEMENT_MULTIPLIER = 2.5
 const startButton = document.getElementById('start')!!
+
+
 startButton.addEventListener('click', () => {
     // @ts-ignore
     window.DeviceMotionEvent.requestPermission()
