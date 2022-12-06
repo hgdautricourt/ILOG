@@ -1,29 +1,7 @@
 import express, { Express, Request, Response } from 'express';
-import { Server } from "socket.io";
-import userAgent from 'express-useragent';
-import dotenv from 'dotenv';
 
 const app: Express = express();
 const port = 8080;
-
-// Initialize dotenv
-dotenv.config();
-
-const io = new Server();
-
-io.on('connect', (socket) => {
-  console.log('New client connected');
-
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
-  });
-});
-
-io.on('laser.update', (data) => {
-  io.emit('slides.update', data);
-});
-
-app.use(userAgent.express());
 
 app.get('/api', (req, res) => {
     const path = `/api/item/toto}`;

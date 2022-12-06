@@ -4,9 +4,12 @@
   "description": "Projet d'ilog, trop pressé de le faire",
   "main": "express.js",
   "scripts": {
-    "build": "npx tsc -p back/tsconfig.json -p front/tsconfig.json",
-    "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch -p back/tsconfig.json -p front/tsconfig.json\" \"nodemon -q api/index.js\""
+    "build:back": "npx tsc -p back/tsconfig.json",
+    "build:front": "npx tsc -p front/tsconfig.json",
+    "watch:back": "npx tsc --watch -p back/tsconfig.json",
+    "watch:front": "npx tsc --watch -p front/tsconfig.json",
+    "start": "node api/index.js",
+    "dev": "concurrently \"yarn run watch:back\" \"yarn run watch:front\" \"nodemon -q api/index.js\""
   },
   "repository": {
     "type": "git",
@@ -19,15 +22,11 @@
   },
   "homepage": "https://github.com/hgdautricourt/ILOG#readme",
   "dependencies": {
-    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "express-useragent": "^1.0.15",
-    "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
-    "@types/express-useragent": "^1.0.2",
     "@types/node": "^18.11.10",
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.20",

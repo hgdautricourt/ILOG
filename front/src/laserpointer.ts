@@ -14,16 +14,15 @@ startButton.addEventListener('click', () => {
         .then((res: NotificationPermission) => {
             if (res === 'granted') {
                 const laser = createLaser()
-                const socket = io('https://ilog-hgdautricourt.vercel.app/');
+                const socket = io('https://api.quizeo.com', {transports: ['websocket']});
 
                 socket.on('connect', () => console.log('Connected to Socket.io server'));
                 socket.on('connect_error', (err) => alert(err))
 
                 window.addEventListener('devicemotion', (e: DeviceMotionEvent) => {
-                    const { x, y } = e.accelerationIncludingGravity!!;
+                    const {x, y} = e.accelerationIncludingGravity!!;
 
-
-                    socket.emit('laser.update', { x, y: -(y ?? 0) })
+                    socket.emit('laser.update', {x, y: -(y ?? 0)})
                     moveLaserPointer(laser, MULTIPLIER * (x ?? 0), MULTIPLIER * -(y ?? 0))
                 })
 
@@ -41,7 +40,7 @@ function createLaser(): HTMLSpanElement {
     laser.style.width = `${POINTER_SIZE}px`;
     laser.style.height = `${POINTER_SIZE}px`;
     laser.style.backgroundColor = "red";
-    laser.style.borderRadius= "100%";
+    laser.style.borderRadius = "100%";
     laser.style.boxShadow = "0px 0px 150px 8px rgba(255,0,0,1)";
 
     // Add the laser pointer to the document

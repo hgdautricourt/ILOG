@@ -4,7 +4,7 @@
 import io from 'socket.io-client';
 
 // Connect to the Socket.IO server
-const socket = io('https://ilog-hgdautricourt.vercel.app');
+const socket = io('https://api.quizeo.com');
 
 // Listen for a connection event
 socket.on('connect', () => {
@@ -34,7 +34,7 @@ function createLaser(): HTMLSpanElement {
     laser.style.height = `${pointerSize}px`;
     laser.style.backgroundColor = "red";
     laser.style.borderRadius= "100%";
-    laser.style.boxShadow = "0px 0px 150px 8px rgba(255,46,46,1)";
+    laser.style.boxShadow = "0px 0px 150px 8px rgba(255,0,0,1)";
 
     // Add the laser pointer to the document
     document.body.appendChild(laser);

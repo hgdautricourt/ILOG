@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const socket_io_client_1 = __importDefault(require("socket.io-client"));
+import io from 'socket.io-client';
 const POINTER_SIZE = 15;
 const MULTIPLIER = 2.5;
 const xCenter = window.innerWidth / 2;
@@ -14,7 +9,7 @@ startButton.addEventListener('click', () => {
         .then((res) => {
         if (res === 'granted') {
             const laser = createLaser();
-            const socket = (0, socket_io_client_1.default)('https://ilog-hgdautricourt.vercel.app/');
+            const socket = io('https://api.quizeo.com', { transports: ['websocket'] });
             socket.on('connect', () => console.log('Connected to Socket.io server'));
             socket.on('connect_error', (err) => alert(err));
             window.addEventListener('devicemotion', (e) => {
