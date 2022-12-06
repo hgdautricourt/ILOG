@@ -53,11 +53,11 @@ export function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: nu
     requestAnimationFrame(() => {
         
         // round x and y to 1 decimal places
-        x = Math.round(xCenter + x * 100) / 10;
-        y = Math.round(yCenter + y * 100) / 10;
+        x = Math.round( x * 10) / 10;
+        y = Math.round(y * 10) / 10;
 
         // Update the position of the laser pointer on the screen
-        laserPointer.style.left = `${x}px`;
-        laserPointer.style.top = `${x}px`;
+        laserPointer.style.left = `${xCenter + x * 10}px`;
+        laserPointer.style.top = `${yCenter + y * 10}px`;
     })
 }
