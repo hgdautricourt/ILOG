@@ -39,14 +39,9 @@ export function moveLaser(laserPointer: HTMLSpanElement, x: number, y: number) {
 export function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: number) {
     // Get the current position of the laser pointer
     requestAnimationFrame(() => {
-        const {left, top} = laserPointer.getBoundingClientRect();
-
-        // Calculate the new position of the laser pointer using the acceleration values
-        const newLeft = window.innerWidth/2-x;
-        const newTop = window.innerHeight/2-y;
 
         // Update the position of the laser pointer on the screen
-        laserPointer.style.left = `${newLeft}px`;
-        laserPointer.style.top = `${newTop}px`;
+        laserPointer.style.left = `${xCenter + x}px`;
+        laserPointer.style.top = `${yCenter + y}px`;
     })
 }
