@@ -22,11 +22,11 @@ export function createLaser(): HTMLSpanElement {
     target.style.position = "absolute";
     target.style.left = `${xCenter}px`;
     target.style.top = `${yCenter}px`;
-    target.style.width = `${POINTER_SIZE*5}px`;
-    target.style.height = `${POINTER_SIZE*5}px`;
+    target.style.width = `${POINTER_SIZE*2}px`;
+    target.style.height = `${POINTER_SIZE*2}px`;
     target.style.backgroundColor = "transparent";
     target.style.borderRadius= "100%";
-    target.style.border = "2px solid red";
+    target.style.border = "20px solid red";
     target.style.boxShadow = "0px 0px 12px 3px rgba(255,0,0,0.8)";
 
 
