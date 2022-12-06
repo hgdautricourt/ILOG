@@ -4,7 +4,7 @@
 import io from 'socket.io-client';
 
 // Connect to the Socket.IO server
-const socket = io('https://api.quizeo.com');
+const socket = io('https://api.quizeo.com', { transports: ['websocket']});
 
 // Listen for a connection event
 socket.on('connect', () => {
