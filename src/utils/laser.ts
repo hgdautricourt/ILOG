@@ -20,12 +20,14 @@ export function createLaser(): HTMLSpanElement {
     // Add the laser pointer to the document
     document.body.appendChild(laser);
 
-    
+    return laser
+}
 
+export function createTarget() : HTMLSpanElement {
     const target: HTMLSpanElement = document.createElement("span");
     target.style.position = "absolute";
-    target.style.left = `${xCenter-TARGET_SIZE}px`;
-    target.style.top = `${yCenter-TARGET_SIZE}px`;
+    target.style.left = `${xCenter-POINTER_SIZE}px`;
+    target.style.top = `${yCenter-POINTER_SIZE}px`;
     target.style.width = `${TARGET_SIZE}px`;
     target.style.height = `${TARGET_SIZE}px`;
     target.style.backgroundColor = "transparent";
@@ -35,7 +37,7 @@ export function createLaser(): HTMLSpanElement {
 
     document.body.appendChild(target);
 
-    return laser
+    return target
 }
 
 export function moveLaser(laserPointer: HTMLSpanElement, x: number, y: number) {
