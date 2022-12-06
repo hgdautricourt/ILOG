@@ -1,4 +1,3 @@
-// Import the WebSocket and DeviceMotionEvent interfaces
 import io from 'socket.io-client';
 
 // Set the initial position of the laser pointer to the center of the screen

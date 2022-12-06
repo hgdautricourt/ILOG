@@ -2,14 +2,9 @@
   "name": "ilog",
   "version": "1.0.0",
   "description": "Projet d'ilog, trop pressé de le faire",
-  "main": "express.js",
+  "main": "api/index.js",
   "scripts": {
-    "build:back": "npx tsc -p back/tsconfig.json",
-    "build:front": "npx tsc -p front/tsconfig.json",
-    "watch:back": "npx tsc --watch -p back/tsconfig.json",
-    "watch:front": "npx tsc --watch -p front/tsconfig.json",
-    "start": "node api/index.js",
-    "dev": "concurrently \"yarn run watch:back\" \"yarn run watch:front\" \"nodemon -q api/index.js\""
+    "start": "node api/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,16 +15,5 @@
   "bugs": {
     "url": "https://github.com/hgdautricourt/ILOG/issues"
   },
-  "homepage": "https://github.com/hgdautricourt/ILOG#readme",
-  "dependencies": {
-    "express": "^4.18.2",
-    "socket.io-client": "^4.5.4"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.14",
-    "@types/node": "^18.11.10",
-    "concurrently": "^7.6.0",
-    "nodemon": "^2.0.20",
-    "typescript": "^4.9.3"
-  }
+  "homepage": "https://github.com/hgdautricourt/ILOG#readme"
 }
