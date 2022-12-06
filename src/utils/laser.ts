@@ -1,4 +1,4 @@
-const POINTER_SIZE = 10
+const POINTER_SIZE = 40
 
 const xCenter = window.innerWidth / 2;
 const yCenter = window.innerHeight / 2;
@@ -41,7 +41,7 @@ export function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: nu
     requestAnimationFrame(() => {
 
         // Update the position of the laser pointer on the screen
-        laserPointer.style.left = `${xCenter + (x*4)}px`;
-        laserPointer.style.top = `${yCenter + (y*4)}px`;
+        laserPointer.style.left = `${xCenter + (x*10)}px`;
+        laserPointer.style.top = `${yCenter + (y*10)}px`;
     })
 }
