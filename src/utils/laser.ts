@@ -1,4 +1,6 @@
 const POINTER_SIZE = 40
+const TARGET_SIZE = POINTER_SIZE*5
+
 
 const xCenter = window.innerWidth / 2;
 const yCenter = window.innerHeight / 2;
@@ -7,8 +9,8 @@ export function createLaser(): HTMLSpanElement {
     // Create a new HTML element to represent the laser pointer
     const laser: HTMLSpanElement = document.createElement("span");
     laser.style.position = "absolute";
-    laser.style.left = `${xCenter}px`;
-    laser.style.top = `${yCenter}px`;
+    laser.style.left = `${xCenter-POINTER_SIZE}px`;
+    laser.style.top = `${yCenter-POINTER_SIZE}px`;
     laser.style.width = `${POINTER_SIZE}px`;
     laser.style.height = `${POINTER_SIZE}px`;
     laser.style.backgroundColor = "red";
@@ -18,12 +20,14 @@ export function createLaser(): HTMLSpanElement {
     // Add the laser pointer to the document
     document.body.appendChild(laser);
 
+    
+
     const target: HTMLSpanElement = document.createElement("span");
     target.style.position = "absolute";
-    target.style.left = `${xCenter}px`;
-    target.style.top = `${yCenter}px`;
-    target.style.width = `${POINTER_SIZE*2}px`;
-    target.style.height = `${POINTER_SIZE*2}px`;
+    target.style.left = `${xCenter-TARGET_SIZE}px`;
+    target.style.top = `${yCenter-TARGET_SIZE}px`;
+    target.style.width = `${TARGET_SIZE}px`;
+    target.style.height = `${TARGET_SIZE}px`;
     target.style.backgroundColor = "transparent";
     target.style.borderRadius= "100%";
     target.style.border = "2px solid red";
