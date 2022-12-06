@@ -18,16 +18,3 @@ button#start {
     display: inline-block;
     border-radius: 1rem;
 }
-
-.debug {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    background: #0005;
-}
-
-.debug__value {
-    color: white;
-    font-size: 2rem;
-    font-family: monospace;
-}

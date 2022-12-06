@@ -13,7 +13,7 @@ socket.on('connect', () => {
 
 
 // Set the initial position of the laser pointer to the center of the screen
-const pointerSize = 15
+const pointerSize = 10
 const xCenter = window.innerWidth / 2;
 const yCenter = window.innerHeight / 2;
 const laser = createLaser()
@@ -34,7 +34,7 @@ function createLaser(): HTMLSpanElement {
     laser.style.height = `${pointerSize}px`;
     laser.style.backgroundColor = "red";
     laser.style.borderRadius= "100%";
-    laser.style.boxShadow = "0px 0px 16px 6px rgba(255,0,0,1)";
+    laser.style.boxShadow = "0px 0px 12px 3px rgba(255,0,0,0.8)";
 
     // Add the laser pointer to the document
     document.body.appendChild(laser);
