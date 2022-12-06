@@ -18,6 +18,18 @@ export function createLaser(): HTMLSpanElement {
     // Add the laser pointer to the document
     document.body.appendChild(laser);
 
+    const target: HTMLSpanElement = document.createElement("span");
+    target.style.position = "absolute";
+    target.style.left = `${xCenter}px`;
+    target.style.top = `${yCenter}px`;
+    target.style.width = `${POINTER_SIZE*5}px`;
+    target.style.height = `${POINTER_SIZE*5}px`;
+    target.style.backgroundColor = "transparent";
+    target.style.borderRadius= "100%";
+    target.style.border = "2px solid red";
+    target.style.boxShadow = "0px 0px 12px 3px rgba(255,0,0,0.8)";
+
+
     return laser
 }
 
@@ -41,11 +53,11 @@ export function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: nu
     requestAnimationFrame(() => {
         
         // round x and y to 1 decimal places
-        x = Math.round(x * 10) / 10;
-        y = Math.round(y * 10) / 10;
+        x = Math.round(xCenter + x * 100) / 10;
+        y = Math.round(yCenter + y * 100) / 10;
 
         // Update the position of the laser pointer on the screen
-        laserPointer.style.left = `${xCenter + (x*10)}px`;
-        laserPointer.style.top = `${yCenter + (y*10)}px`;
+        laserPointer.style.left = `${x}px`;
+        laserPointer.style.top = `${x}px`;
     })
 }
