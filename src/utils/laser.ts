@@ -26,8 +26,8 @@ export function createLaser(): HTMLSpanElement {
 export function createTarget() : HTMLSpanElement {
     const target: HTMLSpanElement = document.createElement("span");
     target.style.position = "absolute";
-    target.style.left = `${xCenter-POINTER_SIZE}px`;
-    target.style.top = `${yCenter-POINTER_SIZE}px`;
+    target.style.left = `${xCenter}px`;
+    target.style.top = `${yCenter}px`;
     target.style.width = `${TARGET_SIZE}px`;
     target.style.height = `${TARGET_SIZE}px`;
     target.style.backgroundColor = "transparent";
