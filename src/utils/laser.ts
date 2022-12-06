@@ -39,6 +39,10 @@ export function moveLaser(laserPointer: HTMLSpanElement, x: number, y: number) {
 export function moveLaserPointer(laserPointer: HTMLSpanElement, x: number, y: number) {
     // Get the current position of the laser pointer
     requestAnimationFrame(() => {
+        
+        // round x and y to 2 decimal places
+        x = Math.round(x * 100) / 100;
+        y = Math.round(y * 100) / 100;
 
         // Update the position of the laser pointer on the screen
         laserPointer.style.left = `${xCenter + (x*10)}px`;
