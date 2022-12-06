@@ -1,5 +1,5 @@
 const POINTER_SIZE = 40
-const TARGET_SIZE = POINTER_SIZE*5
+const TARGET_SIZE = POINTER_SIZE*10
 
 
 const xCenter = window.innerWidth / 2;
