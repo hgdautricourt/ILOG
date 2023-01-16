@@ -1,3 +1,4 @@
+
 <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="Ilog" />
 
@@ -16,80 +17,72 @@
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/hgdautricourt/ilog?color=56BEB8">
 
   <img alt="License" src="https://img.shields.io/github/license/hgdautricourt/ilog?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/ilog?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/ilog?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/ilog?color=56BEB8" /> -->
 </p>
 
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Ilog 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
-
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#dart-about">Description</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Dépendances</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Pour commencer</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{hgdautricourt}}" target="_blank">Author</a>
+  <a href="https://github.com/hgdautricourt" target="_blank">Hugo Dautricourt</a> &#xa0; | &#xa0;
+  <a href="https://github.com/HugoDerigny" target="_blank">Hugo Derigny</a>
 </p>
 
 <br>
 
 
-## :dart: About ##
+## :dart: Description ##
 
-Describe your project
+Projet de ILOG n°14 : **Pointeur laser virtuel**
+Ce projet est réalisé en Typescript pour la partie web et en Node.js pour le serveur.
+
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+La page laserpointer (sur un navigateur de mobile) comporte un script qui capte les événements "devicemotion" de type DeviceMotionEvent :
+-   elle envoie au serveur les informations issues de l'accéléromètre ;
+-   la page slides (sur une autre machine) comporte un script qui :
+-   reçoit du serveur les informations issues de l'accéléromètre ;
+-   les exploite pour déplacer un curseur sur un canvas HTML.
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
 - [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [WebPack](https://webpack.js.org/)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Dépendances ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Pour utiliser ce projet vous aurez besoin de [Git](https://git-scm.com) et [Node](https://nodejs.org/en/) d'installer.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Pour commencer ##
 
 ```bash
-# Clone this project
+# Cloner ce projet
 $ git clone https://github.com/hgdautricourt/ILOG
 
-# Install dependencies
+# Installer les dépendances via votre manager de paquet node
 $ yarn
+# OU
+$ npm run install
 
-# Run the project
-$ yarn start
+# Lancer le projet
+$ yarn run watch
 
-# The server will initialize in the <http://localhost:3000>
+# Ouvrir le fichier public/index.html
 ```
 
-## :memo: License ##
+## :memo: Licence ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under license from MIT. 
 
+Made with by <a href="https://github.com/{{hgdautricourt}}" target="_blank">Hugo Dautricourt</a> and <a href="https://github.com/HugoDerigny" target="_blank">Hugo Derigny</a>
 
-Made with :heart: by <a href="https://github.com/{{hgdautricourt}}" target="_blank">{{Hugo Dautricourt}}</a>
 
 &#xa0;
 
-<a href="#top">Back to top</a>
+<a href="#top">Retour au début</a>
