@@ -23,23 +23,6 @@ export function createLaser(): HTMLSpanElement {
     return laser
 }
 
-export function createTarget() : HTMLSpanElement {
-    const target: HTMLSpanElement = document.createElement("span");
-    target.style.position = "absolute";
-    target.style.left = `${xCenter-TARGET_SIZE/2}px`;
-    target.style.top = `${yCenter-TARGET_SIZE/2}px`;
-    target.style.width = `${TARGET_SIZE}px`;
-    target.style.height = `${TARGET_SIZE}px`;
-    target.style.backgroundColor = "transparent";
-    target.style.borderRadius= "100%";
-    target.style.border = "2px solid red";
-    target.style.boxShadow = "0px 0px 12px 3px rgba(255,0,0,0.8)";
-
-    document.body.appendChild(target);
-
-    return target
-}
-
 export function moveLaser(laserPointer: HTMLSpanElement, x: number, y: number) {
     // Get the current position of the laser pointer
     requestAnimationFrame(() => {

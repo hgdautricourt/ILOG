@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import {createLaser,createTarget, moveLaser, moveLaserPointer} from "./utils/laser";
+import {createLaser, moveLaserPointer} from "./utils/laser";
 
 const MOVEMENT_MULTIPLIER = 2.5
 const startButton = document.getElementById('start')!!
@@ -11,7 +11,6 @@ startButton.addEventListener('click', () => {
         .then((res: NotificationPermission) => {
             if (res === 'granted') {
                 const laser = createLaser()
-                const target = createTarget()
                 const socket = io('https://api.quizeo.com', {transports: ['websocket']});
 
                 socket.on('connect', () => console.log('Connected to Socket.io server'));

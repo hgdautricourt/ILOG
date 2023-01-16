@@ -36,8 +36,44 @@
 ## :dart: Description ##
 
 Projet de ILOG n°14 : **Pointeur laser virtuel**
-Ce projet est réalisé en Typescript pour la partie web et en Node.js pour le serveur.
+Ce projet est réalisé en Typescript pour la partie web et en NestJS pour le serveur.
 
+## :gear: Difficulté du serveur ##
+
+Pour utiliser correctement l'API DeviceMotionEvent, les navigateurs modernes requièrent que le site soit sécurisés avec
+un certificat SSL. Autrement dit, que le site web soit en `https`, auquel cas il est impossible d'utiliser l'API.
+
+Nous avons donc dû déployer notre site gratuitement sur la plateforme _Vercel_ afin d'avoir un certificat SSL. Ce qui est super pour
+notre simple page. Cependant, Vercel ne permet pas d'héberger un serveur node.js pour utiliser les websockets. J'ai _(Hugo Derigny)_
+donc dû utiliser un projet de mon travail qui est hébergé et qui utilise NestJS pour notre websocket.
+
+Le code de la websocket est donc le suivant :
+```typescript
+@WebSocketGateway({
+  cors: { origin: true },
+  transports: ['websocket'],
+})
+export class Gateway {
+    @WebSocketServer()
+    server: Server;
+    
+    @SubscribeMessage('laser.update')
+    async laserUpdate(@MessageBody() data: { x: number; y: number }) {
+        this.server.emit('slides.update', data);
+    }
+}
+```
+
+Les annotations correspondent à :
+- `@WebSocketGateway()` créer un serveur websocket
+- `@WebSocketServer()` renvoie le serveur de websocket qui nous permet de communiquer avec les clients connectés
+- `@SubscribeMessage()` permet d'associer une fonction à un message envoyé par un client
+- `@MessageBody()` au contenu envoyé par le client
+
+Cette fonction permet donc de récupérer les données envoyées par le client et de les transmettre à tous les clients connectés.
+
+Afin de ne pas trop charger le serveur du travail, nous avons pris la décision de faire les calculs côté client, même si 
+cela aurait été mieux côté serveur.
 
 ## :sparkles: Features ##
 
@@ -51,13 +87,14 @@ La page laserpointer (sur un navigateur de mobile) comporte un script qui capte 
 
 The following tools were used in this project:
 
-- [Node.js](https://nodejs.org/en/)
+- [NestJS](https://nestjs.com)
 - [TypeScript](https://www.typescriptlang.org/)
 - [WebPack](https://webpack.js.org/)
+- [Vercel](https://vercel.com)
 
 ## :white_check_mark: Dépendances ##
 
-Pour utiliser ce projet vous aurez besoin de [Git](https://git-scm.com) et [Node](https://nodejs.org/en/) d'installer.
+Pour utiliser ce projet, vous aurez besoin de [Git](https://git-scm.com) et [Node](https://nodejs.org/en/) d'installer.
 
 ## :checkered_flag: Pour commencer ##
 
